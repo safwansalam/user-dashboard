@@ -4,24 +4,21 @@ function SearchBar({ onSearch }) {
   const [text, setText] = useState("");
 
   useEffect(() => {
-  const delay = setTimeout(() => {
-    onSearch(text);
-  }, 500);
+    const delay = setTimeout(() => {
+      onSearch(text);
+    }, 500);
 
-  return () => clearTimeout(delay);
-}, [text, onSearch]);
+    return () => clearTimeout(delay);
+  }, [text, onSearch]); // ✅ FIXED HERE
 
   return (
-    <div className="search-wrap">
-      <span className="search-icon">⌕</span>
-      <input
-        type="text"
-        className="search-input"
-        placeholder="Search by name…"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-    </div>
+    <input
+      type="text"
+      className="form-control form-control-lg"
+      placeholder="Search users..."
+      value={text}
+      onChange={(e) => setText(e.target.value)}
+    />
   );
 }
 
