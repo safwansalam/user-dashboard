@@ -4,11 +4,12 @@ function SearchBar({ onSearch }) {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    const delay = setTimeout(() => {
-      onSearch(text);
-    }, 500);
-    return () => clearTimeout(delay);
-  }, [text]);
+  const delay = setTimeout(() => {
+    onSearch(text);
+  }, 500);
+
+  return () => clearTimeout(delay);
+}, [text, onSearch]);
 
   return (
     <div className="search-wrap">
